@@ -22,7 +22,7 @@ def start():
             print("Invalid input. Please enter a number")
 
 def create():
-    print("Welcome to the bak account creation page")
+    print("Welcome to the bank account creation page")
 
     while True:
         user_name = input("Enter your name: ") # username
@@ -57,12 +57,36 @@ def create():
 def login():
     print("placeholder")
 
+def menu():
+    int(input("""welcome to the menu.
+          Please select what you wish to do.
+          Type 1 to change your pin
+          Type 2 to check your balance
+          Type 3 to delete your account
+          Type 4 to signout"""))
+    if input == 1:
+        pin()
+
+def pin():
+    print("placeholder")
+
+def balance():
+    print("Placeholder")
+
+def delete():
+    print("Placeholder")
+
+def signout():
+    exit()        
+
+
+
 if __name__ == "__main__":
     random1 = random.randint(1, 20)
     random2 = random.randint(21, 40)
     random3 = random.randint(41, 60)
     random4 = random.randint(61, 80)
-    random5 = random.randint(81, 100)
+    random5 = random.randint(90, 100)
     
     print(f"Loading... {random1}%")
     print(f"Loading... {random2}%")
