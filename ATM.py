@@ -4,13 +4,10 @@ import time  # For lockout feature
 
 
 def start():
-    print(
-        """
-Is this your first time using AIQ bank? 
-If it is please type 1 to create an account. 
-1If not please type 2 to log in.
-        """
-    )
+    print("Is this your first time using AIQ bank?")
+    print("If it is please type 1 to create an account.")
+    print("If not please type 2 to log in.")
+
     while True:
         try:
             user_input = int(input("Enter your choice: "))
@@ -115,27 +112,28 @@ def login():
 
 
 def menu():
-    int(
-        input(
-            """welcome to the menu.
-          Please select what you wish to do.
-          Type 1 to change your pin
-          Type 2 to check your balance
-          Type 3 to delete your account
-          Type 4 to signout"""
-        )
-    )
+    print("welcome to the menu.")
+    print("Your options are as following.")
+    print("Type 1 to change your pin")
+    print("Type 2 to check your balance")
+    print("Type 3 to signout")
+    print("Type 4 to delete your account")
+
+    int(input("Enter your choice: "))
+
     if input == 1:
         pin()
+    elif input == 2:
+        balance()
+    elif input == 3:
+        signout()
+    elif input == 4:
+        delete()
 
 
 def pin():
-    print(
-        """
-          Welcome to the Pin change screen
-          For security reasons we require you to re-enter your PIN"""
-    )
-
+    print("Welcome to the Pin change screen")
+    print("For security reasons we require you to re-enter your PIN")
     pin = int(input("Enter your current PIN: "))
 
 
@@ -148,6 +146,7 @@ def delete():
 
 
 def signout():
+    print("placeholder")
     exit()
 
 
@@ -163,11 +162,7 @@ if __name__ == "__main__":
     print(f"Loading... {random3}%")
     print(f"Loading... {random4}%")
     print(f"Loading.. {random5}%")
-    print(
-        """
-Loading complete,
-AIQ Bank, 
-a service you can trust.
-"""
-    )
+    print("Loading complete,")
+    print("AIQ Bank,")
+    print("a service you can trust.")
     start()
