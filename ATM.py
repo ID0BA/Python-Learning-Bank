@@ -31,6 +31,8 @@ def create():
     while True:
         user_name = input("Enter a username: ")  # username
 
+        user_balance = 0  # creating value for user balance
+
         if (
             not user_name.isalpha()
         ):  # check if username is string only, took this outta the try loop since its not a valueError? right?
@@ -54,10 +56,10 @@ def create():
                     writer = csv.writer(file)
 
                     if file.tell() == 0:  # creating table headers
-                        writer.writerow(["Usernames", "Passwords"])
+                        writer.writerow(["Usernames", "Passwords, Balance"])
 
                     writer.writerow(
-                        [user_name, user_password]
+                        [user_name, user_password, user_balance]
                     )  # writing user data to file
 
                 print("AIQ Bank account created successfully")
@@ -72,46 +74,47 @@ def create():
 def login():
     print("Welcome to AIQ bank")
 
-    # setting max number of attempts allowed to prevent exploitation
     max_attempts = 4
     attempts = 0
 
-    # checks how many attempts have been made
     while attempts < max_attempts:
-
-        Username = input("Please enter your username: ")  # gathering username and pin
+        Username = input("Please enter your username: ")
         Userpin = input("Please enter your PIN: ")
 
-        # opening csv and comparing stored creds against user inputs
         with open("users.csv", mode="r") as file:
             reader = csv.DictReader(file)
 
+            # looping thru rows to match data and user inputs
             for row in reader:
-                if row["Usernames"] == Username:
-                    if row["Passwords"] == Userpin:
-                        print("Identity verified, login successful.")
-                        print("Moving to menu, please wait")
-                        time.sleep(5)
-                        menu()
-                    else:
-                        print
-                        print("incorrect Pin please try again")
-                        attempts += 1
-                        break
-                else:
-                    print("incorrect username please try again")
-                    attempts += 1
+                if row["Usernames"] == Username and row["Passwords"] == Userpin:
+                    print("Identity verified, login successful.")
+                    print("Moving to menu, please wait")
+                    time.sleep(2)
+                    
+                    # Store the user's information
+                    user_data = {
+                        "Name": Username,
+                        "Pass": Userpin,
+                        "Bal": row.get("Balance", "0")  # Retrieve balance, default to 0 if missing
+                    }
+                    # Pass user_data to the
+                    menu(user_data)
                     break
+            else:
+                print("Incorrect username or PIN. Please try again.")
+                attempts += 1
+
         if attempts < max_attempts:
-            print(f"you have {max_attempts - attempts} attempts left")
+            print(f"You have {max_attempts - attempts} attempts left.")
         else:
             print("Too many failed attempts. Please try again later.")
-            print("AIQ bank will be locked for 60 seconds")
+            print("AIQ bank will be locked for 60 seconds.")
             time.sleep(60)
             return False
 
 
-def menu():
+
+def menu(user_data):
     print("welcome to the menu.")
     print("Your options are as following.")
     print("Type 1 to change your pin")
@@ -122,30 +125,44 @@ def menu():
     int(input("Enter your choice: "))
 
     if input == 1:
-        pin()
+        pin(user_data)
     elif input == 2:
-        balance()
+        balance(user_data)
     elif input == 3:
-        signout()
+        signout(user_data)
     elif input == 4:
-        delete()
+        delete(user_data)
 
 
-def pin():
+def pin(user_data):
     print("Welcome to the Pin change screen")
     print("For security reasons we require you to re-enter your PIN")
     pin = int(input("Enter your current PIN: "))
 
 
-def balance():
+def balance(user_data):
+    
+    print("Loading please wait")
+    time.sleep(10)
+    print(f"Hi {user_data['Name']}, your balance is {user_data["Bal"]} ")
+    print("Do you wish to signout or go back to the main menu")
+    print("Type 1 for menu")
+    print("Type to signout")
+
+    while True:
+        choice1 = int(input("Enter here: "))
+        if choice1 == 1:
+            menu()
+        elif choice1 == 2:
+            signout()
+        else:
+            print("Invalid input please enter either 1 or 2")
+
+def delete(user_data):
     print("Placeholder")
 
 
-def delete():
-    print("Placeholder")
-
-
-def signout():
+def signout(user_data):
     print("placeholder")
     exit()
 
