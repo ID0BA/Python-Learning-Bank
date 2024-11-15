@@ -137,7 +137,14 @@ def menu(user_data):
 def pin(user_data):
     print("Welcome to the Pin change screen")
     print("For security reasons we require you to re-enter your PIN")
-    pin = int(input("Enter your current PIN: "))
+    user_pin = int(input("Enter your current PIN: "))
+    while True:
+        with open("users.csv", mode="r") as file:
+            reader = csv.DictReader(file)
+        
+        for row in reader:
+            if row['passwords'] == user_pin:
+                print("PIN successfully verified, please")
 
 
 def balance(user_data):
