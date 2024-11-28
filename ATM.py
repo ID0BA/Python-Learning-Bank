@@ -22,6 +22,7 @@ def start():
         except ValueError:
             print("Invalid input. Please enter a number")
 
+
 def create():
     print("Welcome to the AIQ bank account creation page")
     print("Please choose a username")
@@ -74,8 +75,12 @@ def login():
                     print("Identity verified, login successful.")
                     print("Moving to menu, please wait")
                     time.sleep(2)
-                    
-                    user_data = {"Name": Username, "Pass": Userpin, "Bal": row.get("Balance")}
+
+                    user_data = {
+                        "Name": Username,
+                        "Pass": Userpin,
+                        "Bal": row.get("Balance"),
+                    }
                     menu(user_data)
                     return  # Exit the login loop after successful login
             else:
@@ -91,8 +96,6 @@ def login():
             return
 
 
-
-
 def menu(user_data):
     print("welcome to the menu.")
     print("Your options are as following.")
@@ -101,7 +104,7 @@ def menu(user_data):
     print("Type 3 to signout")
     print("Type 4 to delete your account")
 
-    (input("Enter your choice: "))
+    int(input("Enter your choice: "))
 
     if input == 1:
         pin(user_data)
@@ -120,9 +123,9 @@ def pin(user_data):
     while True:
         with open("users.csv", mode="r") as file:
             reader = csv.DictReader(file)
-        
+
         for row in reader:
-            if row['passwords'] == user_pin:
+            if row["passwords"] == user_pin:
                 print("PIN successfully verified, please")
 
 
@@ -151,9 +154,19 @@ def delete(user_data):
     print("Placeholder")
 
 
-def signout(user_data):
+def signout():
+    print("Signing out, please wait")
+    time.sleep(3)
+    print("Signed out, thank you for using AIQ bank")
+    start()
+
+
+def add(user_data):
     print("placeholder")
-    exit()
+
+
+def send(user_data):
+    print("placeholder")
 
 
 if __name__ == "__main__":
