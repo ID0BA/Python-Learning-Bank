@@ -64,24 +64,6 @@ The project combines the knowledge I’ve gained throughout my apprenticeship in
 
 ---
 
-## Project Structure
-
-python-learning-bank/
-│
-├── AIQ/ # Django project directory
-│ ├── asgi.py # ASGI configuration for asynchronous handling
-│ ├── settings.py # Project settings and configuration
-│ ├── urls.py # URL routing for the project
-│ ├── wsgi.py # WSGI configuration for synchronous handling
-│ └── **init**.py # Mark the directory as a Python package
-│
-├── manage.py # Django project management command-line utility
-├── requirements.txt # List of Python dependencies
-├── .gitignore # Files and directories to ignore by Git
-└── venv/ # Virtual environment for Python dependencies
-
----
-
 ## Key Technologies Used
 
 - **Django**: Backend framework for handling business logic, user authentication, and database operations.
