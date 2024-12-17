@@ -21,6 +21,7 @@ def start():
                 print("Please choose option 1 or 2.")
         except ValueError:
             print("Invalid input. Please enter a number")
+            print("testing CI/CD")
 
 
 def create():
