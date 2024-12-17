@@ -1,9 +1,15 @@
 import random  # For loading screen number
 import csv  # For generating and reading usernames/passwords
 import time  # For lockout feature
+import os
+
+
+def clear_screen():
+    os.system("cls" if os.name == "nt" else "clear")
 
 
 def start():
+    clear_screen()
     print("Is this your first time using AIQ bank?")
     print("If it is please type 1 to create an account.")
     print("If not please type 2 to log in.")
@@ -25,6 +31,7 @@ def start():
 
 
 def create():
+    clear_screen()
     print("Welcome to the AIQ bank account creation page")
     print("Please choose a username")
 
@@ -56,6 +63,7 @@ def create():
 
 
 def login():
+    clear_screen()
     print("Welcome to AIQ bank")
 
     max_attempts = 4
@@ -107,13 +115,16 @@ def menu(user_data):
         4: delete,
     }
 
+    clear_screen()
     while True:
-        print("welcome to the menu.")
+        print("Welcome to the AIQ menu.")
         print("Your options are as following.")
-        print("Type 1 to change your pin")
-        print("Type 2 to check your balance")
-        print("Type 3 to signout")
-        print("Type 4 to delete your account")
+        print("")
+        print("1 - to change your pin")
+        print("2 - to check your balance")
+        print("3 - to signout")
+        print("4 - to delete your account")
+        print("please select an choice from the options above")
 
         try:
             # getting user input
@@ -133,6 +144,7 @@ def menu(user_data):
 
 
 def pin(user_data):
+    clear_screen()
     print("Welcome to the Pin change screen")
     print("For security reasons we require you to re-enter your PIN")
     user_pin = int(input("Enter your current PIN: "))
@@ -146,6 +158,7 @@ def pin(user_data):
 
 
 def balance(user_data):
+    clear_screen()
     print("Loading, please wait...")
     time.sleep(2)
     print(f"Hi {user_data['Name']}, your balance is {user_data['Bal']}.")
@@ -167,10 +180,12 @@ def balance(user_data):
 
 
 def delete(user_data):
+    clear_screen()
     print("Placeholder")
 
 
-def signout():
+def signout(user_data):
+    clear_screen()
     print("Signing out, please wait")
     time.sleep(3)
     print("Signed out, thank you for using AIQ bank")
@@ -178,10 +193,12 @@ def signout():
 
 
 def add(user_data):
+    clear_screen()
     print("placeholder")
 
 
 def send(user_data):
+    clear_screen()
     print("placeholder")
 
 
