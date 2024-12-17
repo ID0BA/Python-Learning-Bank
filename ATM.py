@@ -97,23 +97,38 @@ def login():
 
 
 def menu(user_data):
-    print("welcome to the menu.")
-    print("Your options are as following.")
-    print("Type 1 to change your pin")
-    print("Type 2 to check your balance")
-    print("Type 3 to signout")
-    print("Type 4 to delete your account")
 
-    int(input("Enter your choice: "))
+    # mapping user choices to correct functions
+    options = {
+        1: pin,
+        2: balance,
+        3: signout,
+        4: delete,
+    }
 
-    if input == 1:
-        pin(user_data)
-    elif input == 2:
-        balance(user_data)
-    elif input == 3:
-        signout(user_data)
-    elif input == 4:
-        delete(user_data)
+    while True:
+        print("welcome to the menu.")
+        print("Your options are as following.")
+        print("Type 1 to change your pin")
+        print("Type 2 to check your balance")
+        print("Type 3 to signout")
+        print("Type 4 to delete your account")
+
+        try:
+            # getting user input
+            choice = int(input("Enter your choice: "))
+            if choice in options:
+                # calling functions ring ring
+                should_continue = options[choice](user_data)
+                # exit loop if function is false aka dont exist
+                if should_continue is False:
+                    break
+            else:
+                print("Invalid choice. Please select a valid option")
+        except ValueError:
+            print("Invalid input. Please enter a number")
+
+    print("Thank you for using the menu :)")
 
 
 def pin(user_data):
