@@ -66,13 +66,14 @@ The project combines the knowledge I’ve gained throughout my apprenticeship in
 
 ## Key Technologies Used
 
-- **Django**: Backend framework for handling business logic, user authentication, and database operations.
+- **Flask**: Backend framework for handling business logic, user authentication, and database operations.
 - **MariaDB**: Relational database for storing user and transaction data.
 - **Docker**: Containerization tool to isolate the application’s dependencies and environments.
 - **GitHub Actions**: CI/CD automation for building, testing, and deploying code.
-- **AWS**: Cloud provider for hosting the application and database.
+- **DigitalOcean**: Cloud provider for hosting the application and database.
 - **SSL**: Secure communication protocol for encrypting data between the client and server.
 - **Cloudflare**: DNS and security service to ensure fast and secure access to the application.
+- **DataDog**: Monitoring tool to track the performance and health of the application and its infrastructure.
 
 ---
 
