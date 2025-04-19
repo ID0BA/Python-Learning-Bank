@@ -31,21 +31,24 @@ class Bankuser:
     def save_to_csv(self):
         file_path = "Details.csv"
 
-        # Check if the file exists and is not empty
-        file_exists = os.path.exists(file_path) and os.path.getsize(file_path) > 0
+        try:
+            # Check if the file exists and is not empty
+            file_exists = os.path.exists(file_path) and os.path.getsize(file_path) > 0
 
-        # Open the file in append mode
-        with open(file_path, mode="a", newline="") as file:
-            writer = csv.writer(file)
+            # Open the file in append mode
+            with open(file_path, mode="a", newline="") as file:
+                writer = csv.writer(file)
 
-            # Write headers if the file is empty
-            if not file_exists:
-                writer.writerow(["User_ID", "Username", "Password", "Balance"])
+                # Write headers if the file is empty
+                if not file_exists:
+                    writer.writerow(["User_ID", "Username", "Password", "Balance"])
 
-            # Write the account details
-            writer.writerow(
-                [self.user_id, self.username, self.password, f"{self.balance:.2f}"]
-            )
+                # Write the account details
+                writer.writerow(
+                    [self.user_id, self.username, self.password, f"{self.balance:.2f}"]
+                )
+        except Exception as e:
+            print(f"An error occurred while saving to CSV: {e}")
 
     def menu(self):
         print("Placeholder")
@@ -84,8 +87,8 @@ def loading_screen():
         random.randint(90, 100),
     ]
 
-    for step in loading_steps:
-        print(f"Loading... {step}%")
+    for i in loading_steps:
+        print(f"Loading... {i}%")
         time.sleep(0.5)
 
     print("Loading complete.")
